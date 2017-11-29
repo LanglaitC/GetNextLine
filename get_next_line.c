@@ -6,7 +6,7 @@
 /*   By: clanglai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:30 by clanglai          #+#    #+#             */
-/*   Updated: 2017/11/29 10:19:49 by clanglai         ###   ########.fr       */
+/*   Updated: 2017/11/29 10:42:46 by clanglai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,4 @@ int			get_next_line(const int fd, char **line)
 	if (fd < 0 || !line)
 		return (-1);
 	return (get_line(fd, line, 0));
-}
-
-int main(int argc, char **argv)
-{
-	(void)argc;
-	int fd;
-	char *str;
-
-	fd = open(argv[1], O_RDONLY);
-	while(get_next_line(fd, &str) == 1)
-		printf("%s\n",str);
-	close(fd);
 }
