@@ -6,7 +6,7 @@
 /*   By: clanglai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:01:04 by clanglai          #+#    #+#             */
-/*   Updated: 2017/11/29 10:18:36 by clanglai         ###   ########.fr       */
+/*   Updated: 2018/03/14 16:27:15 by clanglai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include "libft/libft.h"
+# include "libft/inc/libft.h"
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>

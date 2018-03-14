@@ -6,7 +6,7 @@
 /*   By: clanglai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:30 by clanglai          #+#    #+#             */
-/*   Updated: 2018/03/14 15:17:40 by clanglai         ###   ########.fr       */
+/*   Updated: 2018/03/14 16:35:34 by clanglai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ static int	read_file(char **line, char **save, int fd)
 	char *tmp;
 	int	 ret;
 	
-	ft_strclr(*save);
+	*save = ft_strnew(BUFF_SIZE);
 	while ((ret = read(fd, *save, BUFF_SIZE)) > 0)
 	{
 		(*save)[ret] = '\0';
-		tmp = ft_strjoin(*line, *save);
+		tmp = ft_strjoin(tmp, *save);
 		free(*line);
 		*line = ft_strdup(tmp);
 		free(tmp);
@@ -54,7 +54,6 @@ int			get_next_line(const int fd, char **line)
 {
 	static char *save;
 	int			ret;
-	char		*tmp;
 
 	if (!save)
 		save = ft_strnew(BUFF_SIZE);
@@ -65,19 +64,6 @@ int			get_next_line(const int fd, char **line)
 	if (ft_strchr(save, '\n'))
 		save = ft_strchr(save, '\n') + 1;
 	else
-/*	{
-		ft_strclr(save);
-		while ((ret = read(fd, save, BUFF_SIZE)) > 0)
-		{
-			save[ret] = '\0';
-			*line = ft_strjoin(*line, save);
-			if (find_next_line(*line) >= 0)
-			{
-				save = ft_strchr(save, '\n') + 1;
-				break;
-			}
-		}
-	}*/
 	ret = read_file(line, &save, fd);
 	if (ret == 0 && !ft_strchr(save, '\n'))
 		ft_strclr(save);
@@ -87,7 +73,7 @@ int			get_next_line(const int fd, char **line)
 		return (-1);
 	return (ret == 0 && ft_strlen(*line) == 0 ? 0 : 1);
 }
-
+/*
 int main(int argc, char **argv)
 {
 	char *line;
@@ -101,4 +87,4 @@ int main(int argc, char **argv)
 	}
 	free(line);
 	return (0);
-}
+}*/
